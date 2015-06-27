@@ -54,3 +54,32 @@ body {
 td li{
     list-style-type: none;
 }
+
+#social_icons{
+	border: none;
+	width: 50px;
+	margin-top: 10px;
+	margin-right:10px;
+}
+	.facebook_icon{
+		background: url("facebook_icon.png");
+	}
+	.twitter_icon{
+		background: url("twitter_icon.png");
+	}
+	.google_plus_icon{
+		background: url("google_plus_icon.png");
+	}
+	.pinterest_icon{
+		background: url("pinterest_icon.png");
+	}
+	.instagram_icon{
+		background: url("instagram_icon.png");
+	}
+		#icon_active{
+			background-position: 0px 0px;
+		}
+
+		#icon_inactive{
+			background-position: 50px 0px;
+		}

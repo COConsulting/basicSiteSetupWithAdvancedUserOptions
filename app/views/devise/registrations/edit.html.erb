@@ -61,22 +61,102 @@
     
     <h3>Social Media Profiles</h3>
       <div class="row">
-        <div class="col-md-4">
-          <%= f.text_field :facebook %>
+        <div class="col-md-1" id="social_icons">
+          <% 
+            @facebook_URL = "http://www.facebook.com/"
+
+            if current_user.facebook == ''
+          %>
+              <a href="<%= @facebook_URL %>" target="_blank"><%= image_tag("blank.png", :height => "50",:width => "50",:alt => "Facebook",:class => "facebook_icon", :id => "icon_inactive") %></a>
+          <%  
+            elsif
+              @facebook_URL += current_user.facebook
+          %>
+              <a href="<%= @facebook_URL %>" target="_blank"><%= image_tag("blank.png", :height => "50",:width => "50",:alt => "Facebook",:class => "facebook_icon", :id => "icon_active") %></a>
+          <%  
+            end 
+          %>
         </div>
-        <div class="col-md-4">
-          <%= f.text_field :twitter %>
+        <div class="col-md-3">
+          <%= f.text_field :facebook, help: @facebook_URL %>
         </div>
-        <div class="col-md-4">
-          <%= f.text_field :google_plus %>
+        <div class="col-md-1" id="social_icons">
+          <% 
+            @twitter_URL = "http://www.twitter.com/"
+
+            if current_user.twitter == ''
+          %>
+              <a href="<%= @twitter_URL %>" target="_blank"><%= image_tag("blank.png", :height => "50",:width => "50",:alt => "Twitter",:class => "twitter_icon", :id => "icon_inactive") %></a>
+          <%  
+            elsif
+              @twitter_URL += current_user.twitter
+          %>
+              <a href="<%= @twitter_URL %>" target="_blank"><%= image_tag("blank.png", :height => "50",:width => "50",:alt => "Twitter",:class => "twitter_icon", :id => "icon_active") %></a>
+          <%  
+            end 
+          %>
+        </div>
+        <div class="col-md-3">
+          <%= f.text_field :twitter, help: @twitter_URL %>
+        </div>
+        <div class="col-md-1" id="social_icons">
+          <% 
+            @google_plus_URL = "http://plus.google.com/"
+
+            if current_user.google_plus == ''
+          %>
+              <a href="<%= @google_plus_URL %>" target="_blank"><%= image_tag("blank.png", :height => "50",:width => "50",:alt => "Google Plus",:class => "google_plus_icon", :id => "icon_inactive") %></a>
+          <%  
+            elsif
+              @google_plus_URL += current_user.google_plus
+          %>
+              <a href="<%= @google_plus_URL %>" target="_blank"><%= image_tag("blank.png", :height => "50",:width => "50",:alt => "Google Plus",:class => "google_plus_icon", :id => "icon_active") %></a>
+          <%  
+            end 
+          %>
+        </div>
+        <div class="col-md-3">
+          <%= f.text_field :google_plus, help: @google_plus_URL %>
         </div>
       </div>
       <div class="row">
-        <div class="col-md-4">
-          <%= f.text_field :instagram %>
+        <div class="col-md-1" id="social_icons">
+          <% 
+            @instagram_URL = "http://www.instagram.com/"
+
+            if current_user.instagram == ''
+          %>
+              <a href="<%= @instagram_URL %>" target="_blank"><%= image_tag("blank.png", :height => "50",:width => "50",:alt => "Instagram",:class => "instagram_icon", :id => "icon_inactive") %></a>
+          <%  
+            elsif
+              @instagram_URL += current_user.instagram
+          %>
+              <a href="<%= @instagram_URL %>" target="_blank"><%= image_tag("blank.png", :height => "50",:width => "50",:alt => "Instagram",:class => "instagram_icon", :id => "icon_active") %></a>
+          <%  
+            end 
+          %>
         </div>
-        <div class="col-md-4">
-          <%= f.text_field :pinterest %>
+        <div class="col-md-3">
+          <%= f.text_field :instagram, help: @instagram_URL %>
+        </div>
+        <div class="col-md-1" id="social_icons">
+          <% 
+            @pinterest_URL = "http://www.pinterest.com/"
+
+            if current_user.pinterest == ''
+          %>
+              <a href="<%= @pinterest_URL %>" target="_blank"><%= image_tag("blank.png", :height => "50",:width => "50",:alt => "Pinterest",:class => "pinterest_icon", :id => "icon_inactive") %></a>
+          <%  
+            elsif
+              @pinterest_URL += current_user.pinterest
+          %>
+              <a href="<%= @pinterest_URL %>" target="_blank"><%= image_tag("blank.png", :height => "50",:width => "50",:alt => "Pinterest",:class => "pinterest_icon", :id => "icon_active") %></a>
+          <%  
+            end 
+          %>
+        </div>
+        <div class="col-md-3">
+          <%= f.text_field :pinterest, help: @pinterest_URL %>
         </div>
       </div>
 
