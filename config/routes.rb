@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   
-  devise_for :users
   # You can have the root of your site routed with "root"
   root 'pages#home'
 
@@ -9,6 +8,19 @@ Rails.application.routes.draw do
   get 'contact' => 'pages#contact'
   get 'privacy' => 'pages#privacy'
   get 'sitemap' => 'pages#sitemap'
+
+  devise_for :users
+  
+  ##########################
+  ## To get to work later.##
+  ##########################
+
+  # get 'signup' => 'users/sign_up'
+  # get 'signin' => 'devise/sessions#new'
+  
+  ##########################
+  ##         END          ##
+  ##########################
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -62,3 +74,5 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
 end
+
+

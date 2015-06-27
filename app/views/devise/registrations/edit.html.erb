@@ -1,39 +1,111 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<h2>Your Profile</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
+<div class="container">
+  <%= bootstrap_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }, label_errors: true) do |f| %>
+    
+    <%= f.alert_message "Please fix the errors below." %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
+    <h3>Personal Information</h3>
+      <div class="row">
+        <div class="col-md-6">
+          <%= f.text_field :first_name, autofocus: true %>
+        </div>
+        <div class="col-md-6">
+          <%= f.text_field :last_name %>
+        </div>
+      </div>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+      <div class="row">
+        <div class="col-md-6">
+          <% 
+            if current_user.security_level == 0 
+              @user_status = 'Your account is currently suspended. Please contact us for more information.'
+            elsif current_user.security_level == 3 
+              @user_status = 'You are a moderator.'
+            elsif current_user.security_level == 5 
+              @user_status = 'You are an administrator.'
+            end
+          %>
+          <%= f.text_field :user_name, help: @user_status %>
+        </div>
+        <div class="col-md-6">
+          <%= f.email_field :email %>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col-md-6">
+          <% 
+            @end_year = Date.today.year-18 
+            @start_year = Date.today.year-80
+          %>
+          
+          <%= f.date_select(:birthday, :start_year => @start_year, :end_year => @end_year, add_month_numbers: true, :order => [:month, :day, :year], prompt: { day: 'Select day', month: 'Select month', year: 'Select year' }, help: "You must be 18 years or older to have an account.") %>
+        </div>
+      </div>
+      
+    <h3>Address Information</h3>
+      <%= f.text_field :address_1 %>
+      <%= f.text_field :address_2 %>
+      <div class="row">
+        <div class="col-md-6">
+          <%= f.text_field :city %>
+        </div>
+        <div class="col-md-3">
+          <%= f.select :state, options_for_select(us_states, @user.state), prompt: 'Select State' %>
+        </div>
+        <div class="col-md-3">
+          <%= f.text_field :zip_code %>
+        </div>
+      </div>
+    
+    <h3>Social Media Profiles</h3>
+      <div class="row">
+        <div class="col-md-4">
+          <%= f.text_field :facebook %>
+        </div>
+        <div class="col-md-4">
+          <%= f.text_field :twitter %>
+        </div>
+        <div class="col-md-4">
+          <%= f.text_field :google_plus %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <%= f.text_field :instagram %>
+        </div>
+        <div class="col-md-4">
+          <%= f.text_field :pinterest %>
+        </div>
+      </div>
+
+    <h3>Password Change</h3>
+    <i>(leave blank if you don't want to change it)</i><br />
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+      <% end %>
+      <div class="row">
+        <div class="col-md-6">
+          <%= f.password_field :password, autocomplete: "off", help: "Passwords must be at least #{@minimum_password_length} characters long." %> 
+        </div>
+        <div class="col-md-6"> 
+          <%= f.password_field :password_confirmation, autocomplete: "off" %>
+        </div>
+      </div>
+    
+    <br><br>
+    <h3>Please enter your current password to confirm changes</h3>
+      <%= f.password_field :current_password, autocomplete: "off" %>
+
+    <%= f.primary "Update" %>
+
   <% end %>
+</div>
 
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
+<br><br><br><br>
+<div class="center">
+  <h3>Cancel my account</h3>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
+  <p>Wish to leave us :-( You can cancel your account below. <br> But, make sure this is what you really want as it can not be undone. <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger" %></p>
+</div>

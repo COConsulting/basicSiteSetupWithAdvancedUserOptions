@@ -1,16 +1,11 @@
 <h2>Resend unlock instructions</h2>
 
-<%= form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f| %>
-  <%= devise_error_messages! %>
+<%= bootstrap_form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f| %>
+  
+  	<%= f.alert_message "Please fix the errors below." %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
+	<%= f.email_field :email, autofocus: true %>
+	  
+    <%= f.primary "Resend unlock instructions" %>
 
-  <div class="actions">
-    <%= f.submit "Resend unlock instructions" %>
-  </div>
 <% end %>
-
-<%= render "devise/shared/links" %>
