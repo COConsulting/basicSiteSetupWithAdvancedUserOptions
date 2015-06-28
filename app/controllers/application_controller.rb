@@ -7,10 +7,12 @@ class ApplicationController < ActionController::Base
 
   protected
 
+  @previous_page = '/'
+
   ## Overwrites the derauls :user_root from the routes.rb file. 
   ## So, instead of sending the user to their profile page, it sends them to the homepage
   def after_sign_in_path_for(resource)
-    '/'
+    @previous_page
   end
 
   def configure_permitted_parameters
