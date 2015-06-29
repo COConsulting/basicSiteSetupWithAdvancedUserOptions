@@ -24,7 +24,9 @@ After you setup the first user (probably your account), you will need to go into
 	- [ ] Prevent Admins from deleting their own account
 	- [ ] Allow Admins to change status of users
 	- [ ] Allow Admins to update user information
-- [ ] Integrate [OmniAuth](https://github.com/intridea/omniauth)
+- [ ] Advanced Sign-in and Sign-ups 
+	- [ ] Integrate [OmniAuth](https://github.com/intridea/omniauth)
+	- [ ] Allow user to use email or username for sign-in
 - [ ] Run <tt>rake doc:app</tt> at the end
 
 

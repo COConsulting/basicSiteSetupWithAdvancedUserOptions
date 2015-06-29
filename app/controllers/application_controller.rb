@@ -8,14 +8,25 @@ class ApplicationController < ActionController::Base
   protected
 
   def previous_page
-    @previous_page = '/'
+    ## These do not work. When used I get the following error: No route matches [GET] "/user.1"
+    ## Unable to figure out what is requesting the GET route to "/user.1". I have never used that syntax.
+    ## The '1' is a dynamic variable from the logging in user's id. So, where is the code written? Where is it being called?
+
+    # previous_page = request.env["HTTP_REFERER"]
+    # request.env["HTTP_REFERER"]
+    # return
+   
+    ## These all work fine. Is it because they are static pages?
+     '/'
+    # '/about'
+    # 'http://www.google.com'
   end
 
 
   ## Overwrites the derauls :user_root from the routes.rb file. 
-  ## So, instead of sending the user to their profile page, it sends them to the homepage
+  ## So, instead of sending the user to their profile page, it sends them to whatever previous_page is set at.
   def after_sign_in_path_for(resource)
-    @previous_page
+    previous_page 
   end
 
   def configure_permitted_parameters
@@ -37,59 +48,3 @@ class ApplicationController < ActionController::Base
   end
 end
 
-def us_states
-    [
-      ['Alabama', 'AL'],
-      ['Alaska', 'AK'],
-      ['Arizona', 'AZ'],
-      ['Arkansas', 'AR'],
-      ['California', 'CA'],
-      ['Colorado', 'CO'],
-      ['Connecticut', 'CT'],
-      ['Delaware', 'DE'],
-      ['District of Columbia', 'DC'],
-      ['Florida', 'FL'],
-      ['Georgia', 'GA'],
-      ['Hawaii', 'HI'],
-      ['Idaho', 'ID'],
-      ['Illinois', 'IL'],
-      ['Indiana', 'IN'],
-      ['Iowa', 'IA'],
-      ['Kansas', 'KS'],
-      ['Kentucky', 'KY'],
-      ['Louisiana', 'LA'],
-      ['Maine', 'ME'],
-      ['Maryland', 'MD'],
-      ['Massachusetts', 'MA'],
-      ['Michigan', 'MI'],
-      ['Minnesota', 'MN'],
-      ['Mississippi', 'MS'],
-      ['Missouri', 'MO'],
-      ['Montana', 'MT'],
-      ['Nebraska', 'NE'],
-      ['Nevada', 'NV'],
-      ['New Hampshire', 'NH'],
-      ['New Jersey', 'NJ'],
-      ['New Mexico', 'NM'],
-      ['New York', 'NY'],
-      ['North Carolina', 'NC'],
-      ['North Dakota', 'ND'],
-      ['Ohio', 'OH'],
-      ['Oklahoma', 'OK'],
-      ['Oregon', 'OR'],
-      ['Pennsylvania', 'PA'],
-      ['Puerto Rico', 'PR'],
-      ['Rhode Island', 'RI'],
-      ['South Carolina', 'SC'],
-      ['South Dakota', 'SD'],
-      ['Tennessee', 'TN'],
-      ['Texas', 'TX'],
-      ['Utah', 'UT'],
-      ['Vermont', 'VT'],
-      ['Virginia', 'VA'],
-      ['Washington', 'WA'],
-      ['West Virginia', 'WV'],
-      ['Wisconsin', 'WI'],
-      ['Wyoming', 'WY']
-    ]
-end
