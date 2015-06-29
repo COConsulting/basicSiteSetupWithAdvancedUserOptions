@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   get 'privacy' => 'pages#privacy'
   get 'sitemap' => 'pages#sitemap'
 
-  devise_for :users, :skip => [:sessions, :registrations] 
+  devise_for :users, :skip => [:sessions, :registrations]
 
   devise_scope :user do
     get    "sign-in",           to: "devise/sessions#new",          as: :new_user_session
@@ -26,7 +26,7 @@ Rails.application.routes.draw do
     put    "sign-up",           to: "devise/registrations#update"
     delete "user/delete",       to: "devise/registrations#destrony"
 
-    get    "users/profile",     to: 'devise/registrations#edit',    as: :user_root
+    get    "user/profile",     to: 'devise/registrations#edit',    as: :user_root
   end
 
   

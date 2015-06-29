@@ -7,7 +7,10 @@ class ApplicationController < ActionController::Base
 
   protected
 
-  @previous_page = '/'
+  def previous_page
+    @previous_page = '/'
+  end
+
 
   ## Overwrites the derauls :user_root from the routes.rb file. 
   ## So, instead of sending the user to their profile page, it sends them to the homepage
