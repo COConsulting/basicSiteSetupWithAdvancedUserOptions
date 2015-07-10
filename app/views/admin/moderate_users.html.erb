@@ -1,0 +1,207 @@
+<% @title="Admin - Moderate Users" %>
+
+<div class="container">
+	<div class="col-md-12">
+		<h1>Users Dashboard</h1>
+		<div class="navbar-left">
+			<%= link_to "Admin Dashboard", admin_dashboard_path %> > 
+			<li class="dropdown" style="list-style-type: none; display: inline-block; ">
+	            <a href=<%="#{admin_moderate_stories_path}"%> class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+	            	Users Dashboard
+	        	    <span class="caret"></span>
+	        	</a>
+      
+	            <ul class="dropdown-menu" role="menu">
+	              <li><%= link_to "Users Dashboard", admin_moderate_users_path %></li>
+	              <li><%= link_to "Stories Dashboard", admin_moderate_stories_path %></li>
+	              <li><%= link_to "Events Dashboard", admin_moderate_events_path %></li>
+	              <li><%= link_to "Event Items Dashboard", admin_moderate_event_items_path %></li>
+	              <li><%= link_to "Companies Dashboard", admin_moderate_companies_path %></li>
+	              <li><%= link_to "Locations Dashboard", admin_moderate_locations_path %></li>
+	            </ul>
+	        </li><!-- End of Listing Dropdown -->
+     	</div>
+	</div>
+
+	<div class="col-md-12">
+		<h3>Overall User Statistics</h3>
+	</div>
+	<div class="col-md-12">
+		<table class="table table-bordered" style="text-align:center;padding:5px;font-size:18px;">
+			<tr>
+				<td><strong>Users</strong></td>
+				<td><strong>Admins</strong></td>
+				<td><strong>Moderators</strong></td>
+				<td><strong>Basic Users</strong></td>
+				<td><strong>Suspended Users</strong></td>
+			</tr>
+			<tr>
+				<% 
+					@num_users = 0
+					@num_admins = 0
+					@num_mods = 0
+					@num_basic = 0
+					@num_suspended = 0
+
+					@users.each do |user|
+
+						@num_users = @num_users + 1
+
+						if user.security_level == 0
+							@num_suspended = @num_suspended + 1
+						elsif user.security_level == 1
+							@num_basic = @num_basic + 1
+						elsif user.security_level == 3
+							@num_mods = @num_mods + 1
+						elsif user.security_level == 5
+							@num_admins = @num_admins + 1
+						end
+					end
+
+				%>
+				<td><%= @num_users %></td>
+				<td><%= @num_admins %></td>
+				<td><%= @num_mods %></td>
+				<td><%= @num_basic %></td>
+				<td><%= @num_suspended %></td>
+			</tr>
+		</table>
+	</div>
+
+	<div class="col-md-12">
+		<h3>Today's User Statistics</h3>
+	</div>
+	<div class="col-md-12">
+		<table class="table table-bordered" style="text-align:center;padding:5px;font-size:18px;">
+			<tr>
+				<td><strong>New Users</strong></td>
+				<td><strong>Active Users</strong></td>
+			</tr>
+			<tr>
+				<% 
+					@num_new_users = 0
+					@num_active_users = 0
+
+					@users.each do |user|
+						if  user.created_at.to_date == Date.current
+							@num_new_users = @num_new_users + 1
+						end
+
+						if  user.last_sign_in_at.to_date == Date.current
+							@num_active_users = @num_active_users + 1
+						end
+					end
+
+				%>
+
+				<td><%= @num_new_users %></td>
+				<td><%= @num_active_users %></td>
+			</tr>
+		</table>
+	</div>
+	
+	<div class="col-md-12">
+		<h3>List of Users</h3>
+	</div>
+	<div class="col-md-6">&nbsp;</div>
+	<div class="col-md-6">
+		<table class="table table-bordered">
+			<tr>
+				<td><strong>Type of User:</strong></td>
+				<td class="active">Basic</td>
+				<td class="danger">Suspended</td>
+				<td class="info">Moderator</td>
+				<td class="success">Administrator</td>
+			</tr>
+		</table>
+	</div>
+</div>
+
+<table class="table table-bordered table-hover table-condensed">
+	<tr>
+		<th class="col-md-1"><%= sortable "id", "ID" %></th>
+		<th class="col-md-2"><%= sortable "last_name", "Last Name" %></th>
+		<th class="col-md-2"><%= sortable "first_name", "First Name" %></th>
+		<th class="col-md-2"><%= sortable "email", "Email" %></th>
+		<th class="col-md-2"><%= sortable "user_name", "User Name" %></th>
+		<th class="col-md-1"><%= sortable "state", "State" %></th>
+		<th class="col-md-2"><%= sortable "security_level", "Status" %></th>
+		<th class="col-md-1">Edit</th>
+	</tr>
+
+	<% 
+		@users.each do |user|
+
+			# ID set
+			@id = user.id
+
+			# Last Name Set
+			if user.last_name == '' || user.last_name.nil?
+				@last_name = " "
+			else
+				@last_name = user.last_name
+			end
+
+			# First Name Set
+			if user.first_name == '' || user.first_name.nil?
+				@first_name = " "
+			else
+				@first_name = user.first_name
+			end
+
+			#User Name Set
+			if user.user_name == '' || user.user_name.nil?
+				@user_name = " "
+			else
+				@user_name = user.user_name
+			end
+
+			#Email Set, no logic needed as Email will never be blank.
+			@email = user.email
+
+			#State Set
+			if user.state == '' || user.state.nil?
+				@state = " "
+			else
+				@state = user.state
+			end
+
+			#Status Set
+			if user.security_level == '' || user.security_level.nil?
+				@status = "No Status Set"
+				@status_color = "active"
+			elsif user.security_level == 0
+				@status = "0 - Suspended"
+				@status_color = "danger"
+			elsif user.security_level == 1
+				@status = "1 - Basic User"
+				@status_color = "active"
+			elsif user.security_level == 3
+				@status = "3 - Moderator"
+				@status_color = "info"
+			elsif user.security_level == 5
+				@status = "5 - Administrator"
+				@status_color = "success"
+			end 
+	%>
+			<tr>
+				<td class="<%= @status_color %>"><%= @id %></td>
+				<td class="<%= @status_color %>"><%= @last_name %></td>
+				<td class="<%= @status_color %>"><%= @first_name %></td>
+				<td class="<%= @status_color %>"><%= @email %></td>
+				<td class="<%= @status_color %>"><%= @user_name %></td>
+				<td class="<%= @status_color %>"><%= @state %></td>
+				<td class="<%= @status_color %>"><%= @status %></td>
+				<td class="<%= @status_color %>">
+					<li class="dropdown">
+			            <a href="/user/edit" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Edit</a>
+						<ul class="dropdown-menu" role="menu">
+	              			
+			              	<li><%= link_to "Delete", destroy_user_session_path, method: :delete %></li>
+	            		</ul>
+	            	</li>
+				</td>
+			</tr>
+		
+		<% end %>
+</table>

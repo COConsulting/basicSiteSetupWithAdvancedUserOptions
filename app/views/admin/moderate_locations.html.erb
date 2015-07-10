@@ -1,0 +1,25 @@
+<% @title="Admin - Moderate Locations" %>
+
+<div class="container">
+	<div class="col-md-12">
+		<h1>Locations Dashboard</h1>
+		<div class="navbar-left">
+			<%= link_to "Admin Dashboard", admin_dashboard_path %> > 
+			<li class="dropdown" style="list-style-type: none; display: inline-block; ">
+	            <a href=<%="#{admin_moderate_locations_path}"%> class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+	            	Locations Dashboard
+	        	    <span class="caret"></span>
+	        	</a>
+      
+	            <ul class="dropdown-menu" role="menu">
+	              <li><%= link_to "Users Dashboard", admin_moderate_users_path %></li>
+	              <li><%= link_to "Stories Dashboard", admin_moderate_stories_path %></li>
+	              <li><%= link_to "Events Dashboard", admin_moderate_events_path %></li>
+	              <li><%= link_to "Event Items Dashboard", admin_moderate_event_items_path %></li>
+	              <li><%= link_to "Companies Dashboard", admin_moderate_companies_path %></li>
+	              <li><%= link_to "Locations Dashboard", admin_moderate_locations_path %></li>
+	            </ul>
+	        </li><!-- End of Listing Dropdown -->
+     	</div>
+	</div>
+</div>

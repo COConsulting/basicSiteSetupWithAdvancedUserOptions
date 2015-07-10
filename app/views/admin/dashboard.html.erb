@@ -1,0 +1,19 @@
+<% @title="Admin - Dashboard" %>
+
+
+<div class="container">
+	<div class="col-md-12">
+		<h1>Admin Dashboard</h1>
+		<p>This is the dashboard for all admins. In the future this can show different numbers for the site as well. Basically any information that you want an admin to have quick access.</p>
+
+		<h3>What would you like to moderate?</h3>
+		<ul>
+			<li><%= link_to "Users", admin_moderate_users_path %></li>
+			<li><%= link_to "Stories", admin_moderate_stories_path %></li>
+			<li><%= link_to "Events", admin_moderate_events_path %></li>
+			<li><%= link_to "Event Items", admin_moderate_event_items_path %></li>
+			<li><%= link_to "Companies", admin_moderate_companies_path %></li>
+			<li><%= link_to "Locations", admin_moderate_locations_path %></li>
+		</ul>
+	</div>
+</div>

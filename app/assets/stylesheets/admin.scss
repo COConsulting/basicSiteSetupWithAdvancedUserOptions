@@ -1,0 +1,22 @@
+.table th .current {
+	padding-right: 15px;
+	background-repeat: no-repeat;
+	background-position: right center;
+}
+
+.table th .asc {
+	background-image: url(arrow_up.png);
+}
+
+.table th .desc {
+	background-image: url(arrow_down.png);
+}
+
+.table tr .danger  {
+	color:#a80000;
+}
+
+.table td {
+	color:#000;
+}
+

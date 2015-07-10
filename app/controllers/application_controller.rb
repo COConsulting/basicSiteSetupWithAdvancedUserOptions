@@ -25,9 +25,9 @@ class ApplicationController < ActionController::Base
 
   ## Overwrites the derauls :user_root from the routes.rb file. 
   ## So, instead of sending the user to their profile page, it sends them to whatever previous_page is set at.
-  def after_sign_in_path_for(resource)
-    previous_page 
-  end
+  # def after_sign_in_path_for(resource)
+  #  edit_user_registration_path(resource) 
+  # end
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) << :birthday

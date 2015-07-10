@@ -38,11 +38,11 @@
       <div class="row">
         <div class="col-md-6">
           <% 
-            @end_year = Date.today.year-18 
-            @start_year = Date.today.year-80
+            @start_year = Date.today.year-13 
+            @end_year = Date.today.year-80
           %>
           
-          <%= f.date_select(:birthday, :start_year => @start_year, :end_year => @end_year, add_month_numbers: true, :order => [:month, :day, :year], prompt: { day: 'Select day', month: 'Select month', year: 'Select year' }, help: "You must be 18 years or older to have an account.") %>
+          <%= f.date_select(:birthday, :start_year => @start_year, :end_year => @end_year, add_month_numbers: true, :order => [:month, :day, :year], prompt: { day: 'Select day', month: 'Select month', year: 'Select year' }, help: "You must be 13 years or older to have an account.") %>
         </div>
       </div>
       
