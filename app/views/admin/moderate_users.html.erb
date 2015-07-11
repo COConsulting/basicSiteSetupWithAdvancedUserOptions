@@ -10,7 +10,6 @@
 	            	Users Dashboard
 	        	    <span class="caret"></span>
 	        	</a>
-      
 	            <ul class="dropdown-menu" role="menu">
 	              <li><%= link_to "Users Dashboard", admin_moderate_users_path %></li>
 	              <li><%= link_to "Stories Dashboard", admin_moderate_stories_path %></li>
@@ -20,8 +19,8 @@
 	              <li><%= link_to "Locations Dashboard", admin_moderate_locations_path %></li>
 	            </ul>
 	        </li><!-- End of Listing Dropdown -->
-     	</div>
-	</div>
+	 	</div>
+     </div>
 
 	<div class="col-md-12">
 		<h3>Overall User Statistics</h3>
@@ -132,8 +131,12 @@
 	<% 
 		@users.each do |user|
 
-			# ID set
-			@id = user.id
+			# ID set, no logic needed as ID will never be blank. But added for safety sake.
+			if user.id == '' || user.id.nil?
+				@id = " "
+			else
+				@id = user.id
+			end
 
 			# Last Name Set
 			if user.last_name == '' || user.last_name.nil?
@@ -156,8 +159,13 @@
 				@user_name = user.user_name
 			end
 
-			#Email Set, no logic needed as Email will never be blank.
-			@email = user.email
+			#Email Set, no logic needed as Email will never be blank. But added for safety sake.
+			if user.email == '' || user.email.nil?
+				@email = " "
+			else
+				@email = user.email
+			end
+			
 
 			#State Set
 			if user.state == '' || user.state.nil?

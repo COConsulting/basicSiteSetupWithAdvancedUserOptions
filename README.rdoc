@@ -22,21 +22,54 @@ This is a template webApp being developed to provide the basics for a working si
 
 ## To Do List
 
-- [ ] I'd like the redirect page after signing in or signing out to be back to the page the user was on, not the home page. But, the request.referer always gives an error. 
-	- [ ] Possibly could use a combination of popup module and JSON and AJAX to solve this problem. See: http://blog.andrewray.me/how-to-set-up-devise-ajax-authentication-with-rails-4-0/
+- [X] I'd like the redirect page after signing in or signing out to be back to the page the user was on, not the home page.
 - [ ] Create User profile that is not editable. 
-- [ ] Create Admin Dashboard
+- [ ] Create nicer alert messages. 
+- [X] Create Admin Dashboard
 	- [ ] Prevent Admins from deleting their own account
 	- [ ] Allow Admins to change status of users
 	- [ ] Allow Admins to update user information
 - [ ] Advanced Sign-in and Sign-ups 
 	- [ ] Integrate [OmniAuth](https://github.com/intridea/omniauth)
-	- [ ] Allow user to use email or username for sign-in
+	- [X] Allow user to use email or username for sign-in
+	- [ ] Use a combination of popup module and JSON and AJAX to sign in and register. See: http://blog.andrewray.me/how-to-set-up-devise-ajax-authentication-with-rails-4-0/
 - [ ] Run <tt>rake doc:app</tt> at the end
 
 
 
 ## WebApp Version History (Corresponds with Commit History and Summary Titles)
+
+### 0.1.4.1 - Login Updates and Minor Bug Fixes
+
+Now, when a user logs in, they can use either their username or their email address and when login completes they will be redirected back to the same page they were on.
+
+* Deleted old code I was using to try and get redirects to work.
+
+* Added error handling in Moderate Users in case there is ever a time that the user's ID or email address is deleted from the database.
+
+* Cleaned up code in 'app/config/routes.rb' file
+
+Known Bug: 
+* Redirect after signout still doesn't work. Question posted here: http://stackoverflow.com/questions/31361265/redirect-works-for-login-but-not-logout
+
+### 0.1.4
+
+Created the Admin Dashboard
+
+(Note: This defaults a bit away from my template site as I did make admin mod pages for specific areas of my first project app.)
+
+* Fixed a bug where a user's security level was not given a default value upon registration. (Thank you to @Coderhs for his solution to this: http://stackoverflow.com/questions/31331119/updating-a-database-field-when-creating-a-user-using-devise-gem)
+* Added Admin Dashboard link to navbar dropdown and added logic to show for Admins only
+* Added breadcrumb navigation to all moderation pages with a dropdown menu on the last link to show the other dashboards
+* Created Moderate User Page with sortable columns showing all registered users
+  * Added Stats for number of users, admins, mods, basics, and suspendeds
+  * Added Stats for new users registered today and active members today
+
+Bug Fixes and other Minor Changes
+* Changed minimum signup age from 18 to 13
+* Changed order of year dropdown box to be recent to latest years
+* Fixed bug where user's name would not appear in the navbar when present in the database
+* Changed verbiage for registering and logging in
 
 ### 0.1.3.4 - Minor Changes
 

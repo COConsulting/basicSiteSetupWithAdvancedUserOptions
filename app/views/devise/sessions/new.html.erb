@@ -6,7 +6,7 @@
 
   <%= f.alert_message "Please fix the errors below." %>
     
-    <%= f.email_field :email, autofocus: true %>
+    <%= f.text_field :login, autofocus: true, :placeholder => "User Name or Email Address" %>
     <%= f.password_field :password %>
     
     <% if devise_mapping.rememberable? -%>
