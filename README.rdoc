@@ -5,7 +5,7 @@ This is a template webApp being developed to provide the basics for a working si
 
 
 ## Versions
-* App: 0.1.3.2
+* App: 0.1.4.2
 * Ruby: 2.2.1p85 (2015-02-26 revision 49769) [x86_64-darwin14]
 * Rails: 4.2.0
 
@@ -38,6 +38,13 @@ This is a template webApp being developed to provide the basics for a working si
 
 
 ## WebApp Version History (Corresponds with Commit History and Summary Titles)
+
+0.1.4.2 - Nicer Notifications and fixed Registration Bug
+
+Added code to make the login, logout, etc notifications and form error alerts nicer and either persistent until closed, or fade out after a time.
+
+Bug Fix: 
+* Register Form was broken as it was looking for a username to be provided and none is ever given. Updated registration form to have the field available and updated the ApplicationController to sanitize it.
 
 ### 0.1.4.1 - Login Updates and Minor Bug Fixes
 
