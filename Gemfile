@@ -11,7 +11,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 # My added gems
-gem 'bootstrap-sass'
+gem 'bootstrap-sass', '~> 3.3.5'
 gem 'bootstrap-switch-rails', '~> 3.0.0'
 gem 'bootstrap_form'
 gem 'paperclip', '~> 4.2'
