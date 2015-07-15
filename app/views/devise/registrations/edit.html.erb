@@ -176,9 +176,11 @@
         </div>
       </div>
     
-    <br><br>
-    <h3>Please enter your current password to confirm changes</h3>
-      <%= f.password_field :current_password, autocomplete: "off" %>
+    <% if f.object.encrypted_password.present? %>
+      <br><br>
+      <h3>Please enter your current password to confirm changes</h3>
+        <%= f.password_field :current_password, autocomplete: "off" %>
+    <% end %> 
 
     <%= f.primary "Update" %>
 

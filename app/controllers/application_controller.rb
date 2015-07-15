@@ -6,27 +6,16 @@ class ApplicationController < ActionController::Base
   after_filter :store_location
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+  #################################################################
+  ## Start section for Redirect to Previous Page on Login/Logout ##
+  #################################################################
+
   def store_location
-    # store last url - this is needed for post-login redirect to whatever the user last visited.
     return unless request.get? 
     if (request.path != "/login" &&
         request.path != "/logout" &&
         request.path != "/register" &&
         !request.path.start_with?("/admin", "/users", "/user") &&
-            ## Previous line should eliminate the need for the following code.
-            # request.path != "/user/profile/" &&
-            # request.path != "/user/profile/edit" &&
-            # request.path != "/users/password/" &&
-            # request.path != "/users/password/new" &&
-            # request.path != "/users/password/edit" &&
-            # request.path != "/users/confirmation" &&
-            # request.path != "/admin/dashboard" &&
-            # request.path != "/admin/moderate_users" &&
-            # request.path != "/admin/moderate_events" &&
-            # request.path != "/admin/moderate_event_items" &&
-            # request.path != "/admin/moderate_companies" &&
-            # request.path != "/admin/moderate_locations" &&
-            # request.path != "/admin/moderate_stories" &&
         !request.xhr?) # don't store ajax calls
       session[:previous_url] = request.fullpath 
     end
@@ -41,6 +30,10 @@ class ApplicationController < ActionController::Base
   def after_sign_out_path_for(resource)
     session[:previous_url] || root_path
   end
+
+  #################################################################
+  ##  End section for Redirect to Previous Page on Login/Logout  ##
+  #################################################################
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) << :birthday

@@ -10,13 +10,21 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
-#My added gems
+# My added gems
 gem 'bootstrap-sass', '~> 3.3.4'
 gem 'bootstrap-switch-rails', '~> 3.0.0'
 gem 'bootstrap_form'
 gem 'paperclip', '~> 4.2'
-gem 'devise'
 gem 'figaro'
+
+# Gems for Authentication
+gem 'devise'
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem "omniauth-google-oauth2"
+gem 'omniauth-twitter'
+gem 'omniauth-amazon'
+gem 'omniauth-github'
 
 group :development, :test do
   gem 'byebug'

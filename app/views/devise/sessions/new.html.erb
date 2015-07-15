@@ -10,11 +10,12 @@
 
 			<%= bootstrap_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
-			  <%= f.alert_message "Please fix the errors below." %>
-			    
-			    <%= f.text_field :login, autofocus: true, :placeholder => "User Name or Email Address" %>
-			    <%= f.password_field :password %>
-			    
+			  	<%= f.alert_message "Please fix the errors below." %>
+				    <%= f.text_field :login, autofocus: true, :placeholder => "User Name or Email Address" %>
+					<% if f.object.password_required? %>
+					    <%= f.password_field :password %>
+					<% end %>
+		    	
 			    <% if devise_mapping.rememberable? -%>
 			      <%= f.check_box :remember_me %>
 			    <% end %>

@@ -5,7 +5,7 @@ This is a template webApp being developed to provide the basics for a working si
 
 
 ## Versions
-* App: 0.1.4.2.2
+* App: 0.1.4.3
 * Ruby: 2.2.1p85 (2015-02-26 revision 49769) [x86_64-darwin14]
 * Rails: 4.2.0
 
@@ -24,20 +24,40 @@ This is a template webApp being developed to provide the basics for a working si
 
 - [X] I'd like the redirect page after signing in or signing out to be back to the page the user was on, not the home page.
 - [ ] Create User profile that is not editable. 
-- [ ] Create nicer alert messages. 
+- [X] Create nicer alert messages. 
 - [X] Create Admin Dashboard
 	- [ ] Prevent Admins from deleting their own account
 	- [ ] Allow Admins to change status of users
 	- [ ] Allow Admins to update user information
 - [ ] Advanced Sign-in and Sign-ups 
-	- [ ] Integrate [OmniAuth](https://github.com/intridea/omniauth)
+	- [X] Integrate [OmniAuth](https://github.com/intridea/omniauth)
+		- [X] Offer Facebook
+		- [X] Offer Google
+		- [X] Offer Twitter
+		- [X] Offer Amazon
+		- [X] Offer GitHub
 	- [X] Allow user to use email or username for sign-in
 	- [ ] Use a combination of popup module and JSON and AJAX to sign in and register. See: http://blog.andrewray.me/how-to-set-up-devise-ajax-authentication-with-rails-4-0/
+- [ ] Make static pages nicer (templated)
+	- [ ] Home
+	- [ ] About Us
+	- [ ] Contact Us
+	- [ ] Registration
+	- [ ] Login
+	- [ ] Privacy Policy
+	- [ ] Site Map
 - [ ] Run <tt>rake doc:app</tt> at the end
 
 
 
 ## WebApp Version History (Corresponds with Commit History and Summary Titles)
+
+### 0.1.4.3 - OmniAuth Integration
+* Updated code to include authentication/Logins by users using their Facebook, Google, Twitter, Amazon, or GitHub logins.
+* Updated Login pages to not show password if callback brings the user back to fill in missing information.
+* Update Profile page to not require current password to update information if they logged in / registered with a 3rd party provider.
+
+Other minor code changes to improve basic readability and to make it better.
 
 ### 0.1.4.2.2 - Minor code and design enhancements
 * Updated the redirect code to be a bit slimmer.

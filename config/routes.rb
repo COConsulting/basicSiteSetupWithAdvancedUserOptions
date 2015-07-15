@@ -21,7 +21,8 @@ Rails.application.routes.draw do
 
   ## Customed Devise Routes
   devise_for  :users, 
-              :skip => [:sessions, :registrations]
+              :skip => [:sessions, :registrations],
+              controllers: {omniauth_callbacks: "omniauth_callbacks"}
 
   devise_scope :user do
     get    "login",               to: "devise/sessions#new",            as: :new_user_session
