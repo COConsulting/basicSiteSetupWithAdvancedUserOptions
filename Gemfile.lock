@@ -209,7 +209,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bootstrap-sass (~> 3.3.4)
+  bootstrap-sass
   bootstrap-switch-rails (~> 3.0.0)
   bootstrap_form
   byebug
