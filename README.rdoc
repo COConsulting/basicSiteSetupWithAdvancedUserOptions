@@ -52,6 +52,12 @@ This is a template webApp being developed to provide the basics for a working si
 
 ## WebApp Version History (Corresponds with Commit History and Summary Titles)
 
+### 0.1.4.4 - Removed OmniAuth for the time being and Added Privacy to Profiles
+* I added the ability for a user to make their profile private 
+* I implemented the bootstrap-switch gem for the boolean variable of 'private'. 
+
+After running into some issues, I found the solution. Here is my StackOverflow question and answer: http://stackoverflow.com/questions/32706467/bootstrap-switch-event-handler-not-working-in-safari-nor-firefox
+
 ### 0.1.4.3 - OmniAuth Integration
 * Updated code to include authentication/Logins by users using their Facebook, Google, Twitter, Amazon, or GitHub logins.
 * Updated Login pages to not show password if callback brings the user back to fill in missing information.
