@@ -43,7 +43,9 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:account_update) << :first_name
     devise_parameter_sanitizer.for(:account_update) << :last_name
     devise_parameter_sanitizer.for(:account_update) << :user_name
+    devise_parameter_sanitizer.for(:account_update) << :email
     devise_parameter_sanitizer.for(:account_update) << :birthday
+    devise_parameter_sanitizer.for(:account_update) << :private
     devise_parameter_sanitizer.for(:account_update) << :address_1
     devise_parameter_sanitizer.for(:account_update) << :address_2
     devise_parameter_sanitizer.for(:account_update) << :city

@@ -44,6 +44,10 @@
           
           <%= f.date_select(:birthday, :start_year => @start_year, :end_year => @end_year, add_month_numbers: true, :order => [:month, :day, :year], prompt: { day: 'Select day', month: 'Select month', year: 'Select year' }, help: "You must be 13 years or older to have an account.") %>
         </div>
+        <div class="col-md-3">
+          <%= f.label :private, "Private" %>
+          <%= f.check_box :private, :data => { :size => 'large', 'on-color'=>'success', 'on-text'=>'On', 'off-text'=>'Off', 'animate'=>'true'}, :label=>' ' %>
+        </div>
       </div>
       
     <h3>Address Information</h3>

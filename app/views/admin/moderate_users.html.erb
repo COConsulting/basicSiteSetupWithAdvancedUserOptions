@@ -119,6 +119,7 @@
 <table class="table table-bordered table-hover table-condensed">
 	<tr>
 		<th class="col-md-1"><%= sortable "id", "ID" %></th>
+		<th class="col-md-1"><%= sortable "private", "Private" %></th>
 		<th class="col-md-2"><%= sortable "last_name", "Last Name" %></th>
 		<th class="col-md-2"><%= sortable "first_name", "First Name" %></th>
 		<th class="col-md-2"><%= sortable "email", "Email" %></th>
@@ -136,6 +137,17 @@
 				@id = " "
 			else
 				@id = user.id
+			end
+
+			# Private set, no logic needed as private will never be blank. But added for safety sake.
+			if user.private == '' || user.private.nil?
+				@private = " "
+			else
+				if user.private
+					@private = 'Yes'
+				else
+					@private = 'No'
+				end
 			end
 
 			# Last Name Set
@@ -179,24 +191,25 @@
 				@status = "No Status Set"
 				@status_color = "active"
 			elsif user.security_level == 0
-				@status = "0 - Suspended"
+				@status = "Suspended"
 				@status_color = "danger"
 			elsif user.security_level == 1
-				@status = "1 - Basic User"
+				@status = "Basic"
 				@status_color = "active"
 			elsif user.security_level == 3
-				@status = "3 - Moderator"
+				@status = "Moderator"
 				@status_color = "info"
 			elsif user.security_level == 5
-				@status = "5 - Administrator"
+				@status = "Administrator"
 				@status_color = "success"
 			end 
 	%>
 			<tr>
 				<td class="<%= @status_color %>"><%= @id %></td>
+				<td class="<%= @status_color %>"><%= @private %></td>
 				<td class="<%= @status_color %>"><%= @last_name %></td>
 				<td class="<%= @status_color %>"><%= @first_name %></td>
-				<td class="<%= @status_color %>"><%= @email %></td>
+				<td class="<%= @status_color %>"><%= mail_to @email %></td>
 				<td class="<%= @status_color %>"><%= @user_name %></td>
 				<td class="<%= @status_color %>"><%= @state %></td>
 				<td class="<%= @status_color %>"><%= @status %></td>
