@@ -76,13 +76,53 @@ td li{
 	.instagram_icon{
 		background: url("instagram_icon.png");
 	}
-		#icon_active{
-			background-position: 0px 0px;
-		}
+	.blog_icon{
+		background: url("blog_icon.png");
+	}
 
-		#icon_inactive{
-			background-position: 50px 0px;
-		}
+#company_icons{
+	border: none;
+	width: 30px;
+	margin-top: 10px;
+	margin-right:10px;
+}
+	.website_icon{
+		background: url("website_icon.png");
+	}
+	.church_icon{
+		background: url("church_icon.png");
+	}
+	.medical_icon{
+		background: url("medical_icon.png");
+	}
+	.shelter_icon{
+		background: url("shelter_icon.png");
+	}
+	.food_icon{
+		background: url("food_icon.png");
+	}
+
+#sm_icon_active{
+	background-position: 0px 0px;
+}
+
+#sm_icon_inactive{
+	background-position: 30px 0px;
+}
+#med_icon_active{
+	background-position: 0px 0px;
+}
+
+#med_icon_inactive{
+	background-position: 50px 0px;
+}
+#lg_icon_active{
+	background-position: 0px 0px;
+}
+
+#lg_icon_inactive{
+	background-position: 100px 0px;
+}
 
 .breadcrumbs > li > a {
 	font-family: Arial, Helvetica, sans-serif;

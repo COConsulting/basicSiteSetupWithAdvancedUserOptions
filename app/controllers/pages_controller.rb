@@ -5,6 +5,12 @@ class PagesController < ApplicationController
   def about
   end
 
+  def resources
+  end
+
+  def stories
+  end
+
   def contact
   end
 

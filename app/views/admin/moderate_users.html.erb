@@ -126,7 +126,7 @@
 		<th class="col-md-2"><%= sortable "user_name", "User Name" %></th>
 		<th class="col-md-1"><%= sortable "state", "State" %></th>
 		<th class="col-md-2"><%= sortable "security_level", "Status" %></th>
-		<th class="col-md-1">Edit</th>
+		<!-- <th class="col-md-1">Edit</th> -->
 	</tr>
 
 	<% 
@@ -213,7 +213,7 @@
 				<td class="<%= @status_color %>"><%= @user_name %></td>
 				<td class="<%= @status_color %>"><%= @state %></td>
 				<td class="<%= @status_color %>"><%= @status %></td>
-				<td class="<%= @status_color %>">
+				<!-- <td class="<%= @status_color %>">
 					<li class="dropdown">
 			            <a href="/user/edit" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Edit</a>
 						<ul class="dropdown-menu" role="menu">
@@ -221,7 +221,7 @@
 			              	<li><%= link_to "Delete", destroy_user_session_path, method: :delete %></li>
 	            		</ul>
 	            	</li>
-				</td>
+				</td> -->
 			</tr>
 		
 		<% end %>

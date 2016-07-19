@@ -11,7 +11,69 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150921204944) do
+ActiveRecord::Schema.define(version: 20160719055318) do
+
+  create_table "companies", force: :cascade do |t|
+    t.string   "email",                             default: "",                         null: false
+    t.integer  "user_id",                           default: 0,                          null: false
+    t.string   "company_name"
+    t.string   "contact_name"
+    t.text     "description"
+    t.string   "office_phone"
+    t.string   "fax_phone"
+    t.string   "website"
+    t.string   "address_1"
+    t.string   "address_2"
+    t.string   "city"
+    t.string   "state"
+    t.string   "country",                           default: "United States of America"
+    t.integer  "zip_code"
+    t.string   "latitude"
+    t.string   "longitude"
+    t.boolean  "nonprofit",                         default: false,                      null: false
+    t.string   "charity_navigator"
+    t.string   "guide_star"
+    t.string   "nonprofit_number"
+    t.string   "facebook"
+    t.string   "twitter"
+    t.string   "google_plus"
+    t.string   "instagram"
+    t.string   "pinterest"
+    t.string   "blog"
+    t.boolean  "published",                         default: false,                      null: false
+    t.boolean  "verified",                          default: false,                      null: false
+    t.datetime "created_at",                                                             null: false
+    t.datetime "updated_at",                                                             null: false
+    t.boolean  "service_church"
+    t.boolean  "service_food_bank"
+    t.boolean  "service_medical_doctor"
+    t.boolean  "service_medical_dentist"
+    t.boolean  "service_medical_other"
+    t.string   "service_medical_other_description"
+    t.boolean  "service_shelter_womans"
+    t.boolean  "service_shelter_mens"
+    t.boolean  "service_shelter_family"
+    t.boolean  "service_shelter_other"
+    t.string   "service_shelter_other_description"
+    t.boolean  "service_food_meal"
+    t.string   "irs_url"
+  end
+
+  add_index "companies", ["id"], name: "index_companies_on_id", unique: true
+
+  create_table "stories", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "authorName"
+    t.text     "heading"
+    t.text     "body"
+    t.boolean  "published"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.string   "locationCity"
+    t.string   "locationState"
+    t.string   "locationZip"
+    t.string   "locationGPS"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

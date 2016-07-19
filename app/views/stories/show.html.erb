@@ -1,0 +1,32 @@
+<% @title="Stories" %>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong><%= @story.heading %></strong>
+  
+</p>
+
+<p>
+  <%= @story.body %>
+</p>
+
+<p>~ <%= @story.authorName %></p>
+
+<p>Submitted: <%= @story.created_at.strftime("%B, %d %Y") %><br/>
+
+<%=
+  @location = ""
+
+  if @story.locationCity == "" || @story.locationCity == " " || @story.locationCity.nil?
+    @location = ""
+  else
+    "Near: " + @story.locationCity + ", " + @story.locationState
+  end
+%>
+<%= @location %></p>
+
+<% if (user_signed_in?) && (current_user == @story.user) %>
+  <%= link_to 'Edit', edit_story_path(@story) %> |
+  <%= link_to 'Delete', @story, method: :delete, data: { confirm: 'Are you sure?' } %> | 
+<% end %>
+<%= link_to 'Back', stories_path %>

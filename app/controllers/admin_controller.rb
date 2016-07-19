@@ -11,6 +11,10 @@ class AdminController < ApplicationController
       @users = User.order(sort_column + " " + sort_direction)
   end
 
+  def edit_user
+      @users = User.order(sort_column + " " + sort_direction)
+  end
+
   def moderate_events
   end
 

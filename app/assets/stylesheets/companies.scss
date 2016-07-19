@@ -12,10 +12,15 @@
 	background-image: url(arrow_down.png);
 }
 
-.table tr .danger  {
-	color:#a80000;
-}
-
 .table td {
 	color:#000;
 }
+
+.table tr a{
+	color:#000;
+	text-decoration:underline;
+}
+	.table tr a:hover{
+		color:#707070;
+		background-color:#fff;
+	}

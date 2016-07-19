@@ -24,18 +24,19 @@ This is a template webApp being developed to provide the basics for a working si
 
 - [X] I'd like the redirect page after signing in or signing out to be back to the page the user was on, not the home page.
 - [ ] Create User profile that is not editable. 
+- [ ] Add ability for users to see all of the stories they created and mark them as published or not and make edits. Currently, they can only edit the stories that they marked as published by going through the story listings. It would be nice within their dashboard for them to be able to see a list of all the stories they created (published or not), and be able to edit them. 
 - [X] Create nicer alert messages. 
 - [X] Create Admin Dashboard
 	- [ ] Prevent Admins from deleting their own account
 	- [ ] Allow Admins to change status of users
 	- [ ] Allow Admins to update user information
 - [ ] Advanced Sign-in and Sign-ups 
-	- [X] Integrate [OmniAuth](https://github.com/intridea/omniauth)
-		- [X] Offer Facebook
-		- [X] Offer Google
-		- [X] Offer Twitter
-		- [X] Offer Amazon
-		- [X] Offer GitHub
+	- [ ] Integrate [OmniAuth](https://github.com/intridea/omniauth)
+		- [ ] Offer Facebook
+		- [ ] Offer Google
+		- [ ] Offer Twitter
+		- [ ] Offer Amazon
+		- [ ] Offer GitHub
 	- [X] Allow user to use email or username for sign-in
 	- [ ] Use a combination of popup module and JSON and AJAX to sign in and register. See: http://blog.andrewray.me/how-to-set-up-devise-ajax-authentication-with-rails-4-0/
 - [ ] Make static pages nicer (templated)
@@ -50,11 +51,21 @@ This is a template webApp being developed to provide the basics for a working si
 
 
 
+
 ## WebApp Version History (Corresponds with Commit History and Summary Titles)
 
+### 0.3.0 - Added Stories to the mix
+* Added the ability for users to control stories (create, edit, destroy only those they create)
+** Hid links to edit and destroy for those who do not own the story
+* Added the ability for the stories to be listed (showing only those marked to be published)
+
+### 0.2.0 - Added Companies to the mix
+* Added the ability for users to control companies
+* Added the ability for the companies to be listed
+
 ### 0.1.4.4 - Removed OmniAuth for the time being and Added Privacy to Profiles
-* I added the ability for a user to make their profile private 
-* I implemented the bootstrap-switch gem for the boolean variable of 'private'. 
+* Added the ability for a user to make their profile private 
+* Implemented the bootstrap-switch gem for the boolean variable of 'private'. 
 
 After running into some issues, I found the solution. Here is my StackOverflow question and answer: http://stackoverflow.com/questions/32706467/bootstrap-switch-event-handler-not-working-in-safari-nor-firefox
 

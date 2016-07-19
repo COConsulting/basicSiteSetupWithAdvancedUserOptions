@@ -40,6 +40,12 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:sign_up) << :user_name
     devise_parameter_sanitizer.for(:sign_up) << :email
     devise_parameter_sanitizer.for(:sign_in) << :login
+    devise_parameter_sanitizer.for(:sign_in) << :company_name
+    devise_parameter_sanitizer.for(:sign_in) << :address_1
+    devise_parameter_sanitizer.for(:sign_in) << :address_2
+    devise_parameter_sanitizer.for(:sign_in) << :city
+    devise_parameter_sanitizer.for(:sign_in) << :state
+    devise_parameter_sanitizer.for(:sign_in) << :zip_code
     devise_parameter_sanitizer.for(:account_update) << :first_name
     devise_parameter_sanitizer.for(:account_update) << :last_name
     devise_parameter_sanitizer.for(:account_update) << :user_name

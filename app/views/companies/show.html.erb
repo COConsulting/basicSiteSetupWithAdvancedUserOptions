@@ -1,0 +1,419 @@
+<% @title="Company Profile" %>
+
+<!-- <p id="notice"><%= notice %></p> -->
+
+<% 
+  #Set Company Name
+  @name = @company.company_name
+  if @name == '' || @name == ' ' || @name == nil 
+    @name = 'No name on file'
+  end
+
+  #Set Description
+  @description = @company.description
+  if @description == '' || @description == ' ' || @description == nil 
+    @description = 'No description on file'
+  end
+
+  #Set Contact Name
+  @contact = @company.contact_name
+  if @contact == '' || @contact == ' ' || @contact == nil 
+    @contact = 'No contact on file'
+  end
+
+  #Set Phone Number
+  @phone = @company.office_phone
+  if @phone == '' || @phone == ' ' || @phone == nil 
+    @phone = 'No phone number on file'
+  else
+    @phone = number_to_phone(@phone, area_code: true)
+  end
+
+  #Set Fax Number
+  @fax = @company.fax_phone
+  if @fax == '' || @fax == ' ' || @fax == nil 
+    @fax = 'No fax number on file'
+  else
+    @fax = number_to_phone(@fax, area_code: true)
+  end
+
+  #Set Email
+  @email = @company.email
+  if @email == '' || @email == ' ' || @email == nil 
+    @email = 'No email on file'
+  end
+
+  #Set Website
+  @website = @company.website
+  if @website == '' || @name == ' ' || @name == nil 
+    @website = 'No website on file'
+  else
+    @website = "http://www." + @website
+  end
+
+  #Set Non-profit Status
+  @nonprofit = @company.nonprofit
+  if @nonprofit
+    @nonprofit = 'Yes'
+
+    #Set EIN Number
+    @ein = @company.nonprofit_number
+    if @ein == '' || @ein == ' ' || @ein == nil 
+      @ein = 'No EIN on file'
+    end
+
+    #Set IRS Link
+    @irs_link = @company.irs_url
+    if @irs_link == '' || @irs_link == ' ' || @irs_link == nil 
+      @irs_link_name = 'No link on file. Click here to search the IRS website.'
+      @irs_link = 'https://apps.irs.gov/app/eos/mainSearch.do?mainSearchChoice=pub78&dispatchMethod=selectSearch'
+    else
+      @irs_link_name = 'IRS Profile'
+      @irs_link = 'https://apps.irs.gov/app/eos/' + @irs_link
+    end
+
+    #Set Charity Navigator Link
+    @charnav_link = @company.charity_navigator
+    if @charnav_link == '' || @charnav_link == ' ' || @charnav_link == nil 
+      @charnav_link_name = 'No link on file. Click here to search the Charity Navigator website.'
+      @charnav_link = 'http://www.charitynavigator.org/index.cfm?bay=search.advanced'
+    else
+      @charnav_link_name = 'Charity Navigator Profile'
+      @charnav_link = 'http://www.charitynavigator.org/' + @charnav_link
+    end
+
+    #Set GuideStar Link
+    @star_link = @company.guide_star
+    if @star_link == '' || @star_link == ' ' || @star_link == nil 
+      @star_link_name = 'No link on file. Click here to search the GuideStar website.'
+      @star_link = 'http://www.guidestar.org/AdvancedSearch.aspx'
+    else
+      @star_link_name = 'GuideStar Profile'
+      @star_link = 'http://www.guidestar.org/' + @star_link
+    end
+  else
+    @nonprofit = 'No'
+  end
+
+  #Set Address 1
+  @address = @company.address_1
+  if @address == '' || @address == ' ' || @address == nil 
+    @address = 'No street address on file'
+  end
+
+  #Set Address 2
+  @address_2 = @company.address_2
+  if @address_2 == '' || @address_2 == ' ' || @address_2 == nil 
+    @address_2 = nil
+  else
+    @address_2_present = true
+  end
+
+  #Set City
+  @city = @company.city
+  if @city == '' || @city == ' ' || @city == nil 
+    @city = 'No city on file'
+  end
+
+  #Set State
+  @state = @company.state
+  if @state == '' || @state == ' ' || @state == nil 
+    @state = 'No state on file'
+  end
+
+  #Set Zip Code
+  @zip = @company.zip_code
+  if @zip == '' || @zip == ' ' || @zip == nil 
+    @zip = 'No zip code on file'
+  end
+
+  #Set Country
+  @country = @company.country
+  if @country == '' || @country == ' ' || @country == nil 
+    @country = 'No country on file'
+  end
+
+  #Set Facebook
+  @facebook = @company.facebook
+  # if @facebook == '' || @facebook == ' ' || @facebook == nil 
+  #   @facebook = 'No Facebook account on file'
+  # end
+    
+  #Set Twitter
+  @twitter = @company.twitter
+  # if @twitter == '' || @twitter == ' ' || @twitter == nil 
+  #   @twitter = 'No Twitter account on file'
+  # end
+
+  #Set Google Plus
+  @google_plus = @company.google_plus
+  # if @google_plus == '' || @google_plus == ' ' || @google_plus == nil 
+  #   @google_plus = 'No Google Plus account on file'
+  # end
+
+  #Set Instagram
+  @instagram = @company.instagram
+  # if @instagram == '' || @instagram == ' ' || @instagram == nil 
+  #   @instagram = 'No Instagram account on file'
+  # end
+
+  #Set Pinterest
+  @pinterest = @company.pinterest
+  # if @pinterest == '' || @pinterest == ' ' || @pinterest == nil 
+  #   @pinterest = 'No Pinterest account on file'
+  # end
+
+  #Set Blog
+  @blog = @company.blog
+  # if @blog == '' || @blog == ' ' || @blog == nil 
+  #   @blog = 'No Blog on file'
+  # end
+
+  #Set Published Status
+  if @company.published
+    @published = 'Profile is Publicly Visible'
+  else
+    @published = 'Profile is Hidden from View'
+  end
+  
+  #Set Verified Status
+  if @company.verified
+    @verified = 'Company Information has been Verified'
+  else
+    @verified = 'Company Information has not been Verified'
+  end
+
+  #Set Church Status
+  if @company.service_church
+    @church = 'Company has a church ministry setup.'
+  else
+    @church = 'Company does not have a church ministry setup.'
+  end
+  
+  #Set Food Bank Status
+  if @company.service_food_bank
+    @bank = 'Company is a food bank setup.'
+  else
+    @bank = 'Company is not a food bank setup.'
+  end
+
+  #Set Food Meals Status
+  if @company.service_food_meal
+    @meal = 'Company offers meals for the hungry.'
+  else
+    @meal = 'Company does not offer meals for the hungry.'
+  end
+
+  #Set Doctor Status
+  if @company.service_medical_doctor
+    @doctor = 'Company provides medical services for those in need.'
+  else
+    @doctor = 'Company does not provide medical services for those in need.'
+  end
+
+  #Set Dentist Status
+  if @company.service_medical_dentist
+    @dentist = 'Company provides dental services for those in need.'
+  else
+    @dentist = 'Company does not provide dental services for those in need.'
+  end
+
+  #Set Other Medical Status
+  if @company.service_medical_other
+    @med_other = 'Company provides other medical services for those in need.'
+  else
+    @med_other = 'Company does not provide other medical services for those in need.'
+  end
+
+  #Set Women's Shelter Status
+  if @company.service_shelter_womans
+    @women = 'Company provides shelter for women only.'
+  else
+    @women = 'Company does not provide shelter for women only.'
+  end
+  
+  #Set Women's Shelter Status
+  if @company.service_shelter_mens
+    @men = 'Company provides shelter for men only.'
+  else
+    @men = 'Company does not provide shelter for men only.'
+  end
+
+  #Set Women's Shelter Status
+  if @company.service_shelter_family
+    @family = 'Company provides shelter for families.'
+  else
+    @family = 'Company does not provide shelter for families.'
+  end
+
+  #Set Women's Shelter Status
+  if @company.service_shelter_other
+    @shelter_other = 'Company provides other shelter services.'
+  else
+    @shelter_other = 'Company does not provide other shelter services.'
+  end
+%>
+
+
+<h3>Company Information</h3>
+<p>
+  <strong>Company Name:</strong>
+  <%= @name %> <br/>
+  <strong>Description:</strong>
+  <%= @description %> <br/>
+  <strong>Verified:</strong>
+  <%= @company.verified %>
+</p>
+
+
+<h3>Contact Information</h3>
+<p>
+  <strong>Contact Name:</strong>
+  <%= @contact %> <br/>
+  <strong>Office Phone Number:</strong>
+  <%= @phone %> <br/>
+  <strong>Fax Number:</strong>
+  <%= @fax %> <br/>
+  <strong>Email:</strong>
+  <%= @email %> <br/>
+  <strong>Website:</strong>
+  <%= link_to @website, @website, :target => "_blank" %>
+</p>
+
+<h3>NonProfit Information</h3>
+<p>
+  <strong>Nonprofit:</strong><%= @nonprofit %> <br/>
+  <% if @company.nonprofit %>
+      <strong>EIN:</strong> <%= @ein %> <br/>
+      <strong>IRS Link:</strong> <%= link_to @irs_link_name, @irs_link, :target=> "_blank" %> <br/>
+      <strong>Charitynavigator:</strong> <%= link_to @charnav_link_name, @charnav_link, :target => "_blank" %> <br/>
+      <strong>Guidestar:</strong> <%= link_to @star_link_name, @star_link, :target => "_blank" %> <br/>
+  <% end %>        
+</p>
+
+
+<h3>Address Information</h3>
+      <%= @address %> <br/>
+      <%= 
+        if @address_2 != nil
+          @address_2
+        end 
+      %>
+      <% if @address_2_present %>
+        <br/>
+      <% end %>
+      <div class="row">
+        <div class="col-md-6">
+          <%= "#{@city}, #{@state}  #{@zip}" %> <br/>
+          <%= @country %>
+        </div>
+      </div>
+
+<h3>Social Media Profiles</h3>
+  <div class="row">
+    <div class="col-md-1" id="social_icons">
+      <% 
+        @facebook_URL = "http://www.facebook.com/"
+
+        if @facebook == '' || @facebook.nil?
+      %>
+          <a href="<%= @facebook_URL %>" target="_blank"><%= image_tag("blank.png", :height => "50",:width => "50",:alt => "Facebook",:class => "facebook_icon", :id => "med_icon_inactive") %></a>
+      <%  
+        elsif
+          @facebook_URL += @facebook.to_s
+      %>
+          <a href="<%= @facebook_URL %>" target="_blank"><%= image_tag("blank.png", :height => "50",:width => "50",:alt => "Facebook",:class => "facebook_icon", :id => "med_icon_active") %></a>
+      <%  
+        end 
+      %>
+    </div>
+    <div class="col-md-1" id="social_icons">
+      <% 
+        @twitter_URL = "http://www.twitter.com/"
+
+        if @twitter == '' || @twitter.nil?
+      %>
+          <a href="<%= @twitter_URL %>" target="_blank"><%= image_tag("blank.png", :height => "50",:width => "50",:alt => "Twitter",:class => "twitter_icon", :id => "med_icon_inactive") %></a>
+      <%  
+        elsif
+          @twitter_URL += @twitter.to_s
+      %>
+          <a href="<%= @twitter_URL %>" target="_blank"><%= image_tag("blank.png", :height => "50",:width => "50",:alt => "Twitter",:class => "twitter_icon", :id => "med_icon_active") %></a>
+      <%  
+        end 
+      %>
+    </div>
+    <div class="col-md-1" id="social_icons">
+      <% 
+        @google_plus_URL = "http://plus.google.com/"
+
+        if @google_plus == '' || @google_plus.nil?
+      %>
+          <a href="<%= @google_plus_URL %>" target="_blank"><%= image_tag("blank.png", :height => "50",:width => "50",:alt => "Google Plus",:class => "google_plus_icon", :id => "med_icon_inactive") %></a>
+      <%  
+        elsif
+          @google_plus_URL += @google_plus.to_s
+      %>
+          <a href="<%= @google_plus_URL %>" target="_blank"><%= image_tag("blank.png", :height => "50",:width => "50",:alt => "Google Plus",:class => "google_plus_icon", :id => "med_icon_active") %></a>
+      <%  
+        end 
+      %>
+    </div>
+    <div class="col-md-1" id="social_icons">
+      <% 
+        @instagram_URL = "http://www.instagram.com/"
+
+        if @instagram == '' || @instagram.nil?
+      %>
+          <a href="<%= @instagram_URL %>" target="_blank"><%= image_tag("blank.png", :height => "50",:width => "50",:alt => "Instagram",:class => "instagram_icon", :id => "med_icon_inactive") %></a>
+      <%  
+        elsif
+          @instagram_URL += @instagram.to_s
+      %>
+          <a href="<%= @instagram_URL %>" target="_blank"><%= image_tag("blank.png", :height => "50",:width => "50",:alt => "Instagram",:class => "instagram_icon", :id => "med_icon_active") %></a>
+      <%  
+        end 
+      %>
+    </div>
+    <div class="col-md-1" id="social_icons">
+      <% 
+        @pinterest_URL = "http://www.pinterest.com/"
+
+        if @pinterest == '' || @pinterest.nil?
+      %>
+          <a href="<%= @pinterest_URL %>" target="_blank"><%= image_tag("blank.png", :height => "50",:width => "50",:alt => "Pinterest",:class => "pinterest_icon", :id => "med_icon_inactive") %></a>
+      <%  
+        elsif
+          @pinterest_URL += @pinterest.to_s
+      %>
+          <a href="<%= @pinterest_URL %>" target="_blank"><%= image_tag("blank.png", :height => "50",:width => "50",:alt => "Pinterest",:class => "pinterest_icon", :id => "med_icon_active") %></a>
+      <%  
+        end 
+      %>
+    </div>
+
+    <div class="col-md-1" id="social_icons">
+      <% 
+        @blog_URL = "#"
+
+        if @blog == '' || @blog.nil?
+      %>
+          <%= image_tag("blank.png", :height => "50",:width => "50",:alt => "Blog",:class => "blog_icon", :id => "med_icon_inactive") %>
+      <%  
+        elsif
+          @blog_URL = "http://www." + @blog.to_s
+      %>
+         <a href="<%= @blog_URL %>" target="_blank"><%= image_tag("blank.png", :height => "50",:width => "50",:alt => "Blog",:class => "blog_icon", :id => "med_icon_active") %></a>
+      <%  
+        end 
+      %>
+    </div>
+  </div>
+
+<br/><br/><br/>
+
+<% if current_user && current_user.security_level == 5 %>
+  <%= link_to 'Edit', edit_company_path(@company) %> |
+<% end %>
+
+<%= link_to 'Back', companies_path %>

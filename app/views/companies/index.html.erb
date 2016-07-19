@@ -1,0 +1,83 @@
+<% @title="Find Help" %>
+
+<h1>Find Help</h1>
+<p>This is where you will find resources for Shelters, Food Banks, Churches and other places to receive help.</p>
+
+<p id="notice"><%= notice %></p>
+
+<div class="col-md-12">
+  <table class="table table-bordered" style="text-align:center;padding:5px;font-size:18px;">
+    <tr>
+      <th style="text-align:center; text-decoration: underline;" class="col-md-3"><%= sortable "company_name", "Organization Name" %></th>
+      <th class="col-md-2">Services</th>
+      <th class="col-md-2">Phone</th>
+      <th class="col-md-1">Website</th>
+      <th class="col-md-2"><%= sortable "state", "Location" %></th>
+      <th class="col-md-2"><%= sortable "zip_code" %></th>
+    </tr>
+
+    <% @companies.each do |company| %>
+      <% if company.published %>
+        <tr>
+          <td class="col-md-3">
+            <% if current_user && current_user.security_level == 5 %>
+              <%= link_to company.company_name, company %>
+            <% else %>
+              <%= company.company_name %>
+            <% end %>
+          </td>
+          <td class="col-md-2">
+            <% if company.service_church %>
+              <%= image_tag("blank.png", :height => "30",:width => "30",:alt => "Church",:class => "church_icon", :id => "sm_icon_active") %>
+            <% else %>
+              <%= image_tag("blank.png", :height => "30",:width => "30",:alt => "Church",:class => "church_icon", :id => "sm_icon_inactive") %>
+            <% end %>
+
+
+            <% if company.service_food_bank || company.service_food_meal %>
+              <%= image_tag("blank.png", :height => "30",:width => "30",:alt => "Food Bank",:class => "food_icon", :id => "sm_icon_active") %>
+            <% else %>
+              <%= image_tag("blank.png", :height => "30",:width => "30",:alt => "Food Bank",:class => "food_icon", :id => "sm_icon_inactive") %>
+            <% end %>
+            
+
+            <% if company.service_medical_doctor || company.service_medical_dentist || company.service_medical_other %>
+              <%= image_tag("blank.png", :height => "30",:width => "30",:alt => "Medical",:class => "medical_icon", :id => "sm_icon_active") %>
+            <% else %>
+              <%= image_tag("blank.png", :height => "30",:width => "30",:alt => "Medical",:class => "medical_icon", :id => "sm_icon_inactive") %>
+            <% end %>
+            
+
+            <% if company.service_shelter_womans || company.service_shelter_mens || company.service_shelter_family || company.service_shelter_other %>
+              <%= image_tag("blank.png", :height => "30",:width => "30",:alt => "Shelter",:class => "shelter_icon", :id => "sm_icon_active") %>
+            <% else %>
+              <%= image_tag("blank.png", :height => "30",:width => "30",:alt => "Shelter",:class => "shelter_icon", :id => "sm_icon_inactive") %>
+            <% end %>
+
+
+          </td>
+          <td class="col-md-2"><%= number_to_phone(company.office_phone, area_code: true) %></td>
+          <td class="col-md-1">
+            <% 
+              @company_website = "#"
+
+              if company.website == '' || company.website.nil?
+            %>
+                <a href="<%= @company_website %>" target="_blank"><%= image_tag("blank.png", :height => "30",:width => "30",:alt => "Website",:class => "website_icon", :id => "icon_inactive") %></a>
+            <%  
+              elsif
+                @company_website = company.website
+            %>
+                <a href="http://<%= @company_website %>" target="_blank"><%= image_tag("blank.png", :height => "30",:width => "30",:alt => "Website",:class => "website_icon", :id => "icon_active") %></a>
+            <%  
+              end 
+            %>
+
+          </td>
+          <td class="col-md-2" valign="middle"><%= "#{company.state} --> #{company.city}"%></td>
+          <td class="col-md-2"><%= company.zip_code %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </table>
+</div>

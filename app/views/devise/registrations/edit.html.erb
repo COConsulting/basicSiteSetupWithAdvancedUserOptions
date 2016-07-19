@@ -73,12 +73,12 @@
 
             if current_user.facebook == '' || current_user.facebook.nil?
           %>
-              <a href="<%= @facebook_URL %>" target="_blank"><%= image_tag("blank.png", :height => "50",:width => "50",:alt => "Facebook",:class => "facebook_icon", :id => "icon_inactive") %></a>
+              <a href="<%= @facebook_URL %>" target="_blank"><%= image_tag("blank.png", :height => "50",:width => "50",:alt => "Facebook",:class => "facebook_icon", :id => "med_icon_inactive") %></a>
           <%  
             elsif
               @facebook_URL += current_user.facebook.to_s
           %>
-              <a href="<%= @facebook_URL %>" target="_blank"><%= image_tag("blank.png", :height => "50",:width => "50",:alt => "Facebook",:class => "facebook_icon", :id => "icon_active") %></a>
+              <a href="<%= @facebook_URL %>" target="_blank"><%= image_tag("blank.png", :height => "50",:width => "50",:alt => "Facebook",:class => "facebook_icon", :id => "med_icon_active") %></a>
           <%  
             end 
           %>
@@ -92,12 +92,12 @@
 
             if current_user.twitter == '' || current_user.twitter.nil?
           %>
-              <a href="<%= @twitter_URL %>" target="_blank"><%= image_tag("blank.png", :height => "50",:width => "50",:alt => "Twitter",:class => "twitter_icon", :id => "icon_inactive") %></a>
+              <a href="<%= @twitter_URL %>" target="_blank"><%= image_tag("blank.png", :height => "50",:width => "50",:alt => "Twitter",:class => "twitter_icon", :id => "med_icon_inactive") %></a>
           <%  
             elsif
               @twitter_URL += current_user.twitter.to_s
           %>
-              <a href="<%= @twitter_URL %>" target="_blank"><%= image_tag("blank.png", :height => "50",:width => "50",:alt => "Twitter",:class => "twitter_icon", :id => "icon_active") %></a>
+              <a href="<%= @twitter_URL %>" target="_blank"><%= image_tag("blank.png", :height => "50",:width => "50",:alt => "Twitter",:class => "twitter_icon", :id => "med_icon_active") %></a>
           <%  
             end 
           %>
@@ -111,12 +111,12 @@
 
             if current_user.google_plus == '' || current_user.google_plus.nil?
           %>
-              <a href="<%= @google_plus_URL %>" target="_blank"><%= image_tag("blank.png", :height => "50",:width => "50",:alt => "Google Plus",:class => "google_plus_icon", :id => "icon_inactive") %></a>
+              <a href="<%= @google_plus_URL %>" target="_blank"><%= image_tag("blank.png", :height => "50",:width => "50",:alt => "Google Plus",:class => "google_plus_icon", :id => "med_icon_inactive") %></a>
           <%  
             elsif
               @google_plus_URL += current_user.google_plus.to_s
           %>
-              <a href="<%= @google_plus_URL %>" target="_blank"><%= image_tag("blank.png", :height => "50",:width => "50",:alt => "Google Plus",:class => "google_plus_icon", :id => "icon_active") %></a>
+              <a href="<%= @google_plus_URL %>" target="_blank"><%= image_tag("blank.png", :height => "50",:width => "50",:alt => "Google Plus",:class => "google_plus_icon", :id => "med_icon_active") %></a>
           <%  
             end 
           %>
@@ -132,12 +132,12 @@
 
             if current_user.instagram == '' || current_user.instagram.nil?
           %>
-              <a href="<%= @instagram_URL %>" target="_blank"><%= image_tag("blank.png", :height => "50",:width => "50",:alt => "Instagram",:class => "instagram_icon", :id => "icon_inactive") %></a>
+              <a href="<%= @instagram_URL %>" target="_blank"><%= image_tag("blank.png", :height => "50",:width => "50",:alt => "Instagram",:class => "instagram_icon", :id => "med_icon_inactive") %></a>
           <%  
             elsif
               @instagram_URL += current_user.instagram.to_s
           %>
-              <a href="<%= @instagram_URL %>" target="_blank"><%= image_tag("blank.png", :height => "50",:width => "50",:alt => "Instagram",:class => "instagram_icon", :id => "icon_active") %></a>
+              <a href="<%= @instagram_URL %>" target="_blank"><%= image_tag("blank.png", :height => "50",:width => "50",:alt => "Instagram",:class => "instagram_icon", :id => "med_icon_active") %></a>
           <%  
             end 
           %>
@@ -151,12 +151,12 @@
 
             if current_user.pinterest == '' || current_user.pinterest.nil?
           %>
-              <a href="<%= @pinterest_URL %>" target="_blank"><%= image_tag("blank.png", :height => "50",:width => "50",:alt => "Pinterest",:class => "pinterest_icon", :id => "icon_inactive") %></a>
+              <a href="<%= @pinterest_URL %>" target="_blank"><%= image_tag("blank.png", :height => "50",:width => "50",:alt => "Pinterest",:class => "pinterest_icon", :id => "med_icon_inactive") %></a>
           <%  
             elsif
               @pinterest_URL += current_user.pinterest.to_s
           %>
-              <a href="<%= @pinterest_URL %>" target="_blank"><%= image_tag("blank.png", :height => "50",:width => "50",:alt => "Pinterest",:class => "pinterest_icon", :id => "icon_active") %></a>
+              <a href="<%= @pinterest_URL %>" target="_blank"><%= image_tag("blank.png", :height => "50",:width => "50",:alt => "Pinterest",:class => "pinterest_icon", :id => "med_icon_active") %></a>
           <%  
             end 
           %>

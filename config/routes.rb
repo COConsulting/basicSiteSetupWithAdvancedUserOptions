@@ -1,11 +1,19 @@
 Rails.application.routes.draw do
-  
+
+  resources :stories
+
+  get 'pages/resources'
+
+  resources :companies
+
   ## Site's Root Route
   root 'pages#home'
 
   ## Static Page Routes
   get 'home'      => 'pages#home'
   get 'about'     => 'pages#about'
+  get 'resources' => 'pages#resources'
+  get 'stories'   => 'pages#stories'
   get 'contact'   => 'pages#contact'
   get 'privacy'   => 'pages#privacy'
   get 'sitemap'   => 'pages#sitemap'
@@ -13,12 +21,16 @@ Rails.application.routes.draw do
   ## Administrative Routes
   get 'admin/dashboard'
   get 'admin/moderate_users'
+  get 'admin/edit_user'
   get 'admin/moderate_events'
   get 'admin/moderate_event_items'
   get 'admin/moderate_companies'
   get 'admin/moderate_locations'
   get 'admin/moderate_stories'
 
+  ## Companies Routes
+  # get 'resources',                to: "companies#show"
+  
   ## Customed Devise Routes
   devise_for  :users, 
               :skip => [:sessions, :registrations],
