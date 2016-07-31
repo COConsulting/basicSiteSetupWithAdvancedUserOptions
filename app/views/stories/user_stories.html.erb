@@ -1,0 +1,30 @@
+<% @title="Stories" %>
+<h1>Your Stories</h1>
+<p>Below are the stories you have submitted to us.</p>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Published</th>
+      <th>Date Created</th>
+      <th>Heading</th>
+      <th>Story</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @stories.each do |story| %>
+      <% if story.user == current_user %>
+        <tr>
+          <td><%= story.published %></td>
+          <td><%= story.created_at.strftime("%B, %d %Y") %></td>
+          <td><%= link_to story.heading, story %></td>
+          <td><%= story.body %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Tell us your story', new_story_path %>

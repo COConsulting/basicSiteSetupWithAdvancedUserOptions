@@ -1,9 +1,12 @@
 <% @title="Stories" %>
-<p id="notice"><%= notice %></p>
+<% @jumbotron_show = true %>
+<% @jumbotron_content = 'all_stories_jumbotron_content' %>
 
 <h1>Stories</h1>
 <p>Below are the stories submitted to us about others like yourself who are making a difference in a person's life, one bag at a time.</p>
-<table>
+
+<p>We would love to hear your story. <%= link_to 'Click here to tell us your story', new_story_path %></p>
+<table class="table table-striped">
   <thead>
     <tr>
       <th>Submitted by</th>
@@ -26,5 +29,3 @@
 </table>
 
 <br>
-
-<%= link_to 'Tell us your story', new_story_path %>

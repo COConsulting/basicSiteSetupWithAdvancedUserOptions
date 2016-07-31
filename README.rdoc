@@ -5,7 +5,7 @@ This is a template webApp being developed to provide the basics for a working si
 
 
 ## Versions
-* App: 0.1.4.3
+* App: 0.3.1
 * Ruby: 2.2.1p85 (2015-02-26 revision 49769) [x86_64-darwin14]
 * Rails: 4.2.0
 
@@ -20,10 +20,13 @@ This is a template webApp being developed to provide the basics for a working si
 * app/views/pages/privacy.html.erb at line 5 and 6
 
 
+
 ## To Do List
 
 - [X] I'd like the redirect page after signing in or signing out to be back to the page the user was on, not the home page.
 - [ ] Create User profile that is not editable. 
+- [ ] Add ability for a user to see their specific stories on their profile page. 
+- [ ] Update User Profile page with links on the left to see profile information and stories. In the future there can also be links for events, companies the user controls and their donations. 
 - [ ] Add ability for users to see all of the stories they created and mark them as published or not and make edits. Currently, they can only edit the stories that they marked as published by going through the story listings. It would be nice within their dashboard for them to be able to see a list of all the stories they created (published or not), and be able to edit them. 
 - [X] Create nicer alert messages. 
 - [X] Create Admin Dashboard
@@ -53,6 +56,20 @@ This is a template webApp being developed to provide the basics for a working si
 
 
 ## WebApp Version History (Corresponds with Commit History and Summary Titles)
+
+### 0.3.1 - Story Enhancements and Jumbotron
+* FIXED MINOR BUGS
+** Removed Turbolinks as it was causing stories to not update unless the page was refreshed first. 
+** Minor design issues
+** Removed repetitive or obsolete routes
+* STORY ENHANCEMENTS
+** Fixed bug so that a user can no longer type in a story id into the URL to see an unpublished story. Now only the story owner can see the story if it is unpublished and they are signed in. 
+** Fixed a bug where if a user put in an id for a story not found in the database (say they put in id 124 and there were only 123 stories), the website would error out. Now, there is a presence checker and a error notice if there is no story with that id. 
+** Added in geocoding to get the latitude and longitude of a zip code and automatically add that to the story's record. 
+** Updated story form for addition and changes to look nicer. (Bootstrap)
+* ADDED JUMBOTRON FUNCTION
+** Added a jumbotron to the main layout with a check to see if it should be shown. Then on a page by page basis the jumbotron can be shown and page specific content can be displayed. 
+*** Added this to the home page, main stories page, and individual story pages.
 
 ### 0.3.0 - Added Stories to the mix
 * Added the ability for users to control stories (create, edit, destroy only those they create)

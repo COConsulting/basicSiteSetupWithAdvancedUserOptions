@@ -12,11 +12,12 @@ Rails.application.routes.draw do
   ## Static Page Routes
   get 'home'      => 'pages#home'
   get 'about'     => 'pages#about'
-  get 'resources' => 'pages#resources'
-  get 'stories'   => 'pages#stories'
   get 'contact'   => 'pages#contact'
   get 'privacy'   => 'pages#privacy'
   get 'sitemap'   => 'pages#sitemap'
+
+  ## Other Pages
+  get 'resources' => 'companies#index'
 
   ## Administrative Routes
   get 'admin/dashboard'

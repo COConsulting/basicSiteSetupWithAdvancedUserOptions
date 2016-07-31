@@ -1,13 +1,23 @@
 <% @title="Stories" %>
-<p id="notice"><%= notice %></p>
+<% @jumbotron_show = true %>
+<% @jumbotron_content = 'story_jumbotron_content' %>
 
 <p>
-  <strong><%= @story.heading %></strong>
-  
+  <strong><%= @story.heading %></strong>  
 </p>
 
 <p>
   <%= @story.body %>
+</p>
+
+<p>
+  <%=
+      if @story.published 
+        @publish_Notice = "This story has been made public."  
+      else
+        @publish_Notice = "This story is private."  
+      end
+  %>
 </p>
 
 <p>~ <%= @story.authorName %></p>
@@ -15,15 +25,19 @@
 <p>Submitted: <%= @story.created_at.strftime("%B, %d %Y") %><br/>
 
 <%=
-  @location = ""
+  @location = " "
 
   if @story.locationCity == "" || @story.locationCity == " " || @story.locationCity.nil?
-    @location = ""
+    @location = " "
   else
-    "Near: " + @story.locationCity + ", " + @story.locationState
+    @location = "Near: " + @story.locationCity + ", " + @story.locationState 
+
+    unless @story.latitude.nil? or @story.longitude.nil?
+      @location = @location + " (" + @story.latitude.to_s + ", " + @story.longitude.to_s + ")"
+    end
   end
 %>
-<%= @location %></p>
+</p>
 
 <% if (user_signed_in?) && (current_user == @story.user) %>
   <%= link_to 'Edit', edit_story_path(@story) %> |

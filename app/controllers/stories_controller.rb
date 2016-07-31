@@ -11,6 +11,9 @@ class StoriesController < ApplicationController
   # GET /stories/1
   # GET /stories/1.json
   def show
+    if @story.published == false && @story.user != current_user
+        redirect_to stories_url, alert: 'We are sorry, but there was no story found at that URL.'
+    end
   end
 
   # GET /stories/new
@@ -67,7 +70,12 @@ class StoriesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_story
-      @story = Story.find(params[:id])
+      @story_id = params[:id]
+      if Story.exists? id: @story_id
+        @story = Story.find(@story_id)
+      else
+        redirect_to stories_url, alert: 'We are sorry, but there was no story found at that URL.'
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -1,6 +1,15 @@
 <%= render 'layouts/header' %>
 <%= render 'layouts/navbar' %>
 
+
+<% if @jumbotron_show == true %>
+	<div class="jumbotron">
+	  <div class="container">
+	    <%= render @jumbotron_content %>
+	  </div>
+	</div>
+<% end %>
+
 <div class="container">	
 	<% flash.each do |name, msg| %>
 		<% if msg.is_a?(String) %>

@@ -1,41 +1,54 @@
-<%= form_for(@story) do |f| %>
-  <% if @story.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@story.errors.count, "error") %> prohibited this story from being saved:</h2>
-
-      <ul>
-      <% @story.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<br>
+<div class="container">
+  <div class="col-md-2">
+      &nbsp;
+  </div>
+  <div class="col-md-8">
+    <div class="row">
+      <%= bootstrap_form_for(@story) do |f| %>
+  
+      <%= f.alert_message "Please fix the errors below." %>
+      
+      <div class="col-md-10">
+          <h1>Tell Us Your Story</h1>
+      </div>
+      <div class="col-md-2">
+          <%= f.check_box :published %>
+      </div>
     </div>
-  <% end %>
 
-  <div class="field">
-    <%= f.label :heading %><br>
-    <%= f.text_area :heading %>
+    <br>
+    
+    <div class="row">
+      <div class="col-md-12">
+        <%= f.text_field :heading, autofocus: true, hide_label: true, placeholder: "Title of your Story*" %>
+      </div>
+      <div class="col-md-12">
+        <%= f.text_area :body, hide_label: true, placeholder: "Tell us your story*" %>
+      </div>
+
+      <h3>Location</h3>
+      <div class="col-md-4">
+        <%= f.text_field :locationCity, hide_label: true, placeholder: "City*" %>
+      </div>
+      <div class="col-md-4">
+        <%= f.text_field :locationState, hide_label: true, placeholder: "State*" %>
+      </div>
+      <div class="col-md-4">
+        <%= f.text_field :locationZip, hide_label: true, placeholder: "Zip Code*" %>
+      </div>
+
+      <div class ="col-md-10">
+        &nbsp;
+      </div>
+      <div class ="col-md-2">
+          <%= f.submit %>
+      </div>
+    </div> <!-- Row Class -->
+  </div> <!-- End of Column -->
+  <div class="col-md-2">
+        &nbsp;
   </div>
-  <div class="field">
-    <%= f.label :body %><br>
-    <%= f.text_area :body %>
-  </div>
-  <div class="field">
-    <%= f.label :locationCity %><br>
-    <%= f.text_area :locationCity %>
-  </div>
-  <div class="field">
-    <%= f.label :locationState %><br>
-    <%= f.text_area :locationState %>
-  </div>
-  <div class="field">
-    <%= f.label :locationZip %><br>
-    <%= f.text_area :locationZip %>
-  </div>
-  <div class="field">
-    <%= f.label :published %><br>
-    <%= f.check_box :published %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+</div> <!-- Main Container -->
+
 <% end %>
